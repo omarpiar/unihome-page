@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniHome · Tu nueva etapa empieza en casa</title>
+  <meta name="description"
+    content="Encuentra tu espacio universitario cerca del campus, con arrendadores verificados. Descarga UniHome en Google Play.">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f172a;
+      --slate: #64748b;
+      --line: #e7edf3;
+      --soft: #f8fafc;
+      --bg: #fff;
+      --card: #fff;
+      --coral: #F07666;
+      --coral-deep: #D9544A;
+      --coral-soft: #fff0ed;
+      --mint: #70b0a6;
+      --mint-soft: #e5f4f1;
+      --gold-soft: #fff7df;
+      --shadow: 0 8px 24px rgba(15, 23, 42, .08);
+      color-scheme: light
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block
+    }
+
+    a {
+      color: var(--coral-deep)
+    }
+
+    .wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .skip {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 8px 14px;
+      border-radius: 8px;
+      z-index: 20
+    }
+
+    .skip:focus {
+      left: 8px
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--mint);
+      outline-offset: 3px
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px
+    }
+
+    .bar img {
+      height: 34px;
+      width: auto
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      font-size: .92rem;
+      font-weight: 600
+    }
+
+    nav a {
+      color: var(--slate);
+      text-decoration: none
+    }
+
+    nav a:hover {
+      color: var(--ink)
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--coral);
+      color: #fff;
+      font: 700 1.2rem/1 Inter, system-ui, sans-serif;
+      padding: 17px 28px;
+      border-radius: 16px;
+      border: 0;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(217, 84, 74, .28);
+      min-height: 56px
+    }
+
+    .btn:hover {
+      filter: brightness(.95)
+    }
+
+    .btn.sm {
+      font-size: .95rem;
+      padding: 10px 18px;
+      min-height: 44px;
+      box-shadow: none;
+      background: #b54138
+    }
+
+    .btn[aria-disabled="true"] {
+      background: var(--slate);
+      box-shadow: none;
+      cursor: not-allowed
+    }
+
+    .hero {
+      padding: 48px 0 40px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: center
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--coral-deep);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.2rem, 5.4vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      font-weight: 800
+    }
+
+    h1 span {
+      color: var(--coral)
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--slate);
+      max-width: 34ch;
+      margin: 0 0 28px
+    }
+
+    .note {
+      margin: 14px 0 0;
+      font-size: .9rem;
+      color: var(--slate)
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px 0 0;
+      padding: 0;
+      list-style: none
+    }
+
+    .chips li {
+      background: var(--mint-soft);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: .88rem;
+      font-weight: 600
+    }
+
+    .phone {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #fff;
+      width: 100%;
+      max-width: 290px;
+      margin: 0 auto
+    }
+
+    section {
+      padding: 56px 0
+    }
+
+    .alt {
+      background: var(--soft)
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+      letter-spacing: -.02em;
+      line-height: 1.2
+    }
+
+    .sub {
+      color: var(--slate);
+      margin: 0 0 32px;
+      max-width: 60ch
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr))
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow)
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--slate);
+      font-size: .97rem
+    }
+
+    .num {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--coral-soft);
+      color: var(--coral-deep);
+      font-weight: 800;
+      margin-bottom: 12px
+    }
+
+    .shots {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 44px
+    }
+
+    figure {
+      margin: 0;
+      text-align: center
+    }
+
+    figcaption {
+      margin-top: 12px;
+      font-weight: 600;
+      font-size: .95rem
+    }
+
+    .legal {
+      max-width: 760px
+    }
+
+    .legal h3 {
+      margin: 26px 0 6px;
+      font-size: 1.05rem
+    }
+
+    .legal p,
+    .legal li {
+      color: var(--slate)
+    }
+
+    .pend {
+      background: var(--gold-soft);
+      border-radius: 6px;
+      padding: 0 6px;
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      color: var(--slate);
+      font-size: .92rem
+    }
+
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    @media (max-width:820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: left
+      }
+
+      nav {
+        display: none
+      }
+
+      .hero .phone {
+        max-width: 260px
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+    }
+
+    /* --- Identidad visual UniHome --- */
+    :root {
+      --coral: #F07666;
+      --coral-deep: #D9544A;
+      --coral-soft: #FFF0ED;
+      --mint: #70B0A6;
+      --mint-soft: #E5F4F1;
+      --gold: #E9BC56;
+      --gold-soft: #FFF7DF;
+      --ink: #0F172A;
+      --slate: #64748B;
+      --line: #F0E8E5;
+      --soft: #FFFAF8;
+      --bg: #FFFEFD;
+      --card: #FFFFFF;
+      --shadow: 0 12px 34px rgba(15, 23, 42, .07);
+      --shadow-hover: 0 18px 42px rgba(15, 23, 42, .11);
+      color-scheme: light;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 8% 8%, rgba(240, 118, 102, .08), transparent 28rem),
+        var(--bg);
+    }
+
+    .wrap { max-width: 1120px; }
+
+    header {
+      background: rgba(255, 254, 253, .88);
+      border-bottom: 1px solid rgba(240, 232, 229, .85);
+    }
+
+    .bar { min-height: 76px; }
+    .bar img { height: 43px; }
+
+    nav { gap: 20px; }
+    nav a {
+      color: #64748B;
+      transition: color .2s ease;
+    }
+    nav a:hover { color: var(--coral-deep); }
+
+    .btn {
+      background: linear-gradient(135deg, #F07666, #D9544A);
+      border-radius: 999px;
+      box-shadow: 0 9px 22px rgba(217, 84, 74, .22);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .btn:hover {
+      filter: none;
+      transform: translateY(-2px);
+      box-shadow: 0 13px 26px rgba(217, 84, 74, .28);
+    }
+    .btn.sm {
+      background: var(--coral-deep);
+      border-radius: 999px;
+      padding: 10px 20px;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      padding: 76px 0 82px;
+      gap: 56px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 420px;
+      height: 420px;
+      right: 2%;
+      top: 2%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(229, 244, 241, .95), rgba(229, 244, 241, 0));
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 110px;
+      height: 110px;
+      right: 38%;
+      bottom: 12%;
+      border-radius: 32px;
+      background: var(--gold-soft);
+      transform: rotate(18deg);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 20px;
+      border-radius: 999px;
+      background: var(--mint-soft);
+      color: #397D73;
+      letter-spacing: .08em;
+      font-size: .74rem;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+    }
+
+    h1 {
+      max-width: 650px;
+      font-size: clamp(2.55rem, 5.7vw, 4.25rem);
+      letter-spacing: -.055em;
+      line-height: 1.04;
+    }
+    h1 span { color: var(--coral); }
+    .lead {
+      max-width: 39ch;
+      font-size: 1.12rem;
+      line-height: 1.75;
+    }
+    .note { font-size: .88rem; }
+
+    .chips { gap: 9px; margin-top: 30px; }
+    .chips li {
+      border: 1px solid rgba(112, 176, 166, .18);
+      background: var(--mint-soft);
+      color: #315F59;
+      padding: 8px 14px;
+      font-size: .82rem;
+    }
+    .chips li:nth-child(2) {
+      background: var(--gold-soft);
+      border-color: rgba(233, 188, 86, .24);
+      color: #80621F;
+    }
+    .chips li:nth-child(3) {
+      background: var(--coral-soft);
+      border-color: rgba(240, 118, 102, .18);
+      color: var(--coral-deep);
+    }
+
+    .hero .phone {
+      position: relative;
+      max-width: 300px;
+      padding: 8px;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 38px;
+      background: #fff;
+      box-shadow: 0 28px 70px rgba(15, 23, 42, .16), 0 5px 16px rgba(217, 84, 74, .08);
+      transform: rotate(2deg);
+    }
+    .hero .phone img { border-radius: 29px; }
+
+    section { padding: 76px 0; }
+    .alt {
+      background: linear-gradient(180deg, #FFF9F6 0%, #FFFCFA 100%);
+      border-top: 1px solid #F8EFEB;
+      border-bottom: 1px solid #F8EFEB;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.45rem);
+      letter-spacing: -.04em;
+    }
+    .sub {
+      max-width: 62ch;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .grid { gap: 20px; }
+    .card {
+      border: 1px solid #F1E9E6;
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, .045);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(240, 118, 102, .28);
+    }
+    .card h3 { font-size: 1.08rem; letter-spacing: -.015em; }
+    .card p { line-height: 1.7; }
+    .num {
+      width: 40px;
+      height: 40px;
+      background: var(--coral-soft);
+      color: var(--coral-deep);
+      margin-bottom: 16px;
+    }
+    .card:nth-child(2) .num {
+      background: var(--mint-soft);
+      color: #397D73;
+    }
+    .card:nth-child(3) .num {
+      background: var(--gold-soft);
+      color: #987323;
+    }
+
+    .shots { gap: 30px; margin-top: 52px; }
+    .shots .phone {
+      max-width: 265px;
+      padding: 7px;
+      border: 1px solid #F1E9E6;
+      border-radius: 32px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .shots .phone img { border-radius: 25px; }
+    figcaption { color: var(--ink); font-size: .92rem; }
+
+    .legal {
+      padding: 34px;
+      border: 1px solid #F1E9E6;
+      border-radius: 26px;
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, .045);
+    }
+    .legal h3 { margin-top: 28px; }
+    .pend {
+      background: var(--gold-soft);
+      border-radius: 7px;
+      padding: 2px 7px;
+      color: #765A1D;
+    }
+
+    #contacto {
+      background:
+        radial-gradient(circle at 88% 15%, rgba(229,244,241,.9), transparent 18rem),
+        linear-gradient(135deg, #FFF7F3, #FFFCF8);
+    }
+    #contacto .wrap {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    footer {
+      background: #FFFEFD;
+      border-top: 1px solid #F1E9E6;
+      padding: 28px 0;
+    }
+    footer a {
+      color: var(--coral-deep);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 820px) {
+      .bar { min-height: 68px; }
+      .bar img { height: 38px; }
+      .hero {
+        padding: 54px 0 64px;
+        gap: 38px;
+      }
+      .hero::before {
+        width: 300px;
+        height: 300px;
+        right: -12%;
+        top: 42%;
+      }
+      .hero::after { display: none; }
+      .hero .phone { transform: none; }
+      nav { display: none; }
+      section { padding: 60px 0; }
+      .legal { padding: 25px 21px; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding-left: 18px; padding-right: 18px; }
+      .bar img { height: 33px; }
+      .btn.sm { min-height: 40px; padding: 9px 15px; font-size: .85rem; }
+      h1 { font-size: clamp(2.35rem, 12vw, 3.2rem); }
+      .lead { font-size: 1.02rem; }
+      .chips li { font-size: .76rem; }
+      .card { padding: 22px; }
+      .shots { gap: 26px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header>
+    <div class="wrap bar">
+      <a href="#inicio" aria-label="UniHome, inicio"><img src="assets/logo.webp" alt="UniHome" width="180"
+          height="44"></a>
+      <nav aria-label="Principal"><a href="#como">Cómo funciona</a><a href="#beneficios">Beneficios</a><a
+          href="#privacidad">Privacidad</a><a href="#eliminar">Eliminar cuenta</a><a href="#contacto">Contacto</a></nav>
+      <a class="btn sm js-play" href="#inicio">Descargar</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="wrap hero" id="inicio">
+      <div>
+        <p class="eyebrow">Cerca del campus. Cerca de ti.</p>
+        <h1>Tu nueva etapa empieza en casa<span>.</span></h1>
+        <p class="lead">Encuentra tu espacio universitario con arrendadores verificados.</p>
+        <a class="btn js-play" href="#inicio">Descargar en Google Play</a>
+        <p class="note">Disponible para Android.</p>
+        <ul class="chips">
+          <li>Arrendadores verificados</li>
+          <li>Cerca de tu campus</li>
+          <li>Tus datos protegidos</li>
+        </ul>
+      </div>
+      <div class="phone"><img src="assets/app-inicio.webp" width="330" height="650"
+          alt="Pantalla de bienvenida de UniHome: «Tu nueva etapa empieza en casa», con el botón Explorar alojamientos">
+      </div>
+    </div>
+
+    <section id="como" class="alt">
+      <div class="wrap">
+        <h2>Cómo funciona</h2>
+        <p class="sub">De la búsqueda a la mudanza, en tres pasos.</p>
+        <div class="grid">
+          <div class="card"><span class="num" aria-hidden="true">1</span>
+            <h3>Explora en el mapa</h3>
+            <p>Elige tu universidad y mira los alojamientos con su precio, en mapa o en lista.</p>
+          </div>
+          <div class="card"><span class="num" aria-hidden="true">2</span>
+            <h3>Revisa cada espacio</h3>
+            <p>Fotos, precio mensual, distancia caminando, condiciones y si el arrendador está verificado.</p>
+          </div>
+          <div class="card"><span class="num" aria-hidden="true">3</span>
+            <h3>Escribe o agenda</h3>
+            <p>Crea tu cuenta, manda un mensaje al arrendador o agenda una visita.</p>
+          </div>
+        </div>
+        <div class="shots" aria-label="Capturas de la aplicación">
+          <figure>
+            <div class="phone"><img src="assets/app-mapa.webp" width="325" height="661" loading="lazy"
+                alt="Mapa con alojamientos y precios cerca de Universidad Ejemplo"></div>
+            <figcaption>Mapa con precios</figcaption>
+          </figure>
+          <figure>
+            <div class="phone"><img src="assets/app-detalle.webp" width="326" height="657" loading="lazy"
+                alt="Detalle de un alojamiento con fotos, precio, distancia y arrendador verificado"></div>
+            <figcaption>Detalle del alojamiento</figcaption>
+          </figure>
+          <figure>
+            <div class="phone"><img src="assets/app-registro.webp" width="326" height="650" loading="lazy"
+                alt="Formulario para crear una cuenta, con aviso de privacidad"></div>
+            <figcaption>Crea tu cuenta</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios">
+      <div class="wrap">
+        <h2>Pensado para estudiantes</h2>
+        <p class="sub">Menos incertidumbre al elegir dónde vivir.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Arrendadores verificados</h3>
+            <p>Identificamos a quienes publican para que empieces con más confianza.</p>
+          </div>
+          <div class="card">
+            <h3>Cerca de tu campus</h3>
+            <p>Ves la distancia en kilómetros y el tiempo a pie hasta tu universidad.</p>
+          </div>
+          <div class="card">
+            <h3>Precios claros</h3>
+            <p>El precio mensual a la vista en el mapa y en cada ficha.</p>
+          </div>
+          <div class="card">
+            <h3>Tus datos protegidos</h3>
+            <p>Aceptas el aviso de privacidad al registrarte y puedes eliminar tu cuenta cuando quieras.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacidad" class="alt">
+      <div class="wrap legal">
+        <h2>Aviso de privacidad y manejo de datos</h2>
+        <p class="sub">Versión <span class="pend">[VERSIÓN]</span> · Última actualización <span
+            class="pend">[FECHA]</span></p>
+        <h3>Responsable</h3>
+        <p><span class="pend">[NOMBRE DEL RESPONSABLE]</span> es responsable del tratamiento de tus datos personales.
+          Contacto: <span class="pend">[CORREO DE CONTACTO]</span>.</p>
+        <h3>Datos que recopilamos</h3>
+        <ul>
+          <li>Al crear tu cuenta: nombre completo, correo electrónico, fecha de nacimiento, género y contraseña (que se
+            guarda de forma protegida).</li>
+          <li>Datos necesarios para usar la aplicación, como la universidad que eliges y tus mensajes con arrendadores.
+          </li>
+          <li><span class="pend">[DEFINIR: otros datos, si el equipo los recopila]</span></li>
+        </ul>
+        <h3>Para qué los usamos</h3>
+        <ul>
+          <li>Crear y administrar tu cuenta y confirmar tu correo.</li>
+          <li>Permitirte buscar alojamientos, guardar favoritos y comunicarte con arrendadores.</li>
+          <li>Mantener la seguridad del servicio.</li>
+        </ul>
+        <h3>Consentimiento</h3>
+        <p>Al registrarte te pedimos que leas este aviso y marques tu consentimiento. Sin él no se crea la cuenta.</p>
+        <h3>Tus derechos</h3>
+        <p>Puedes solicitar el acceso, la rectificación, la cancelación y la oposición (derechos ARCO) respecto de tus
+          datos, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares,
+          escribiendo a <span class="pend">[CORREO DE CONTACTO]</span>.</p>
+        <h3>Menores de edad, conservación y transferencias</h3>
+        <p><span class="pend">[DEFINIR: tratamiento de datos de menores de edad]</span> · <span class="pend">[DEFINIR:
+            tiempo de conservación]</span> · <span class="pend">[DEFINIR: proveedores o transferencias de datos]</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="eliminar">
+      <div class="wrap legal">
+        <h2>Eliminar tu cuenta</h2>
+        <p class="sub">Puedes pedirlo desde la app o por correo.</p>
+        <h3>Desde la aplicación</h3>
+        <p>Entra a <strong>Perfil → Eliminar cuenta</strong>, escribe tu contraseña y confirma.</p>
+        <h3>Por correo</h3>
+        <p>Escribe a <span class="pend">[CORREO DE CONTACTO]</span> desde el correo con el que te registraste, con el
+          asunto «Eliminar cuenta».</p>
+        <h3>Qué se elimina</h3>
+        <p>Tu cuenta y tus datos personales, salvo lo que la ley obligue a conservar. <span class="pend">[DEFINIR:
+            plazos y excepciones]</span></p>
+      </div>
+    </section>
+
+    <section id="contacto" class="alt">
+      <div class="wrap">
+        <h2>Contacto</h2>
+        <p class="sub">¿Dudas sobre UniHome o sobre tus datos? Escríbenos a <span class="pend">[CORREO DE
+            CONTACTO]</span>.</p>
+        <a class="btn js-play" href="#inicio">Descargar en Google Play</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><span>© 2026 UniHome</span><span><a href="#privacidad">Aviso de privacidad</a> · <a
+          href="#eliminar">Eliminar cuenta</a></span></div>
+  </footer>
+
+  <script>
+    /* Pega aquí el enlace de Google Play cuando la app esté publicada. Mientras esté vacío, los botones muestran «Próximamente». */
+    const PLAY_URL = "https://play.google.com/"; // <--- Cambia esto por el enlace real
+    document.querySelectorAll(".js-play").forEach(function (a) {
+      if (PLAY_URL) { a.href = PLAY_URL; a.target = "_blank"; a.rel = "noopener noreferrer"; return; }
+      a.textContent = a.classList.contains("sm") ? "Próximamente" : "Próximamente en Google Play";
+      a.setAttribute("aria-disabled", "true");
+      a.addEventListener("click", function (e) { e.preventDefault(); });
+    });
+  </script>
+</body>
+
+</html>
