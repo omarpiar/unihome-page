@@ -9,7 +9,6 @@
     content="Solicita la eliminación de tu cuenta de UniHome y de los datos asociados. Procedimiento, plazos y datos que se conservan.">
   <meta name="theme-color" content="#FFF9F5">
   <link rel="icon" href="assets/favicon.png">
-  <link rel="preload" as="image" href="assets/Mudanza-2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -103,6 +102,8 @@
       text-decoration: none;
     }
 
+    .brand picture { display: contents; }
+
     .brand img {
       width: auto;
       height: clamp(30px, 3.8vh, 42px);
@@ -164,7 +165,14 @@
       height: 100%;
       margin: 0;
       overflow: hidden;
+      background-color: #2a201b;
+      background-image: url("data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAABQBgCdASogABUAPt1iqE4opaOiMBgIARAbiWwAqSb2fI36oFuzKv8GGjGJctIJZlfxORKmgDVmynh4AAD9mYExemZ++npehrvWdPbyl/M+LBxKwhDkLZy94zL7euLJm6wlzg/2J1OxEMzskExIPDECok3RtsJXnEpu8jH0fbCXZ24xFTuHoqbxJGWKUw4bDMlS+BBQK4duY/2xHTokXZ7M+YS73UPcoAi4tVp5YAsj/+Jeoi3WGsQgNDh/0mtZVwMGa7PwK5lR+KjeTAQ3IqznCyGHQpmwTRqyAtb214eJgwfAiwVnpLuOmz8sOB4AAAA=");
+      background-position: 70% 30%;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
+
+    .visual picture { display: contents; }
 
     .visual img {
       width: 100%;
@@ -488,7 +496,10 @@
   <header class="site-header">
     <div class="shell topbar">
       <a class="brand" href="index.html" aria-label="UniHome, inicio">
-        <img src="assets/logo.png" alt="UniHome" width="520" height="149">
+        <picture>
+          <source type="image/webp" srcset="assets/logo-320.webp 1x, assets/logo-640.webp 2x">
+          <img src="assets/logo-320.png" alt="UniHome" width="320" height="92">
+        </picture>
       </a>
 
       <nav class="socials" aria-label="Redes sociales de UniHome">
@@ -519,8 +530,18 @@
 
   <section class="hero">
     <figure class="visual">
-      <img src="assets/Mudanza-2.png" width="1286" height="720"
-        alt="Un estudiante sonríe mientras carga una caja de mudanza frente a los edificios de su universidad.">
+      <picture>
+        <source type="image/avif"
+          srcset="assets/mudanza-480.avif 480w, assets/mudanza-768.avif 768w, assets/mudanza-1024.avif 1024w, assets/mudanza-1280.avif 1280w, assets/mudanza-1536.avif 1536w"
+          sizes="100vw">
+        <source type="image/webp"
+          srcset="assets/mudanza-480.webp 480w, assets/mudanza-768.webp 768w, assets/mudanza-1024.webp 1024w, assets/mudanza-1280.webp 1280w, assets/mudanza-1536.webp 1536w"
+          sizes="100vw">
+        <img src="assets/mudanza-1280.jpg"
+          srcset="assets/mudanza-480.jpg 480w, assets/mudanza-768.jpg 768w, assets/mudanza-1024.jpg 1024w, assets/mudanza-1280.jpg 1280w, assets/mudanza-1536.jpg 1536w"
+          sizes="100vw" width="1536" height="1024" fetchpriority="high" decoding="async"
+          alt="Un estudiante sonríe mientras carga una caja de mudanza frente a los edificios de su universidad.">
+      </picture>
     </figure>
     <div class="scrim" aria-hidden="true"></div>
 
