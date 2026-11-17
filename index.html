@@ -9,7 +9,7 @@
     content="Espacios seguros y cómodos junto a tu universidad, con arrendadores verificados. Tú empaca las cajas; nosotros te ayudamos a saber dónde desempacarlas. Descarga UniHome en Google Play.">
   <meta name="theme-color" content="#FFF9F5">
   <link rel="icon" href="assets/favicon.png">
-  <link rel="preload" as="image" href="assets/collegue_moving.jpg">
+  <link rel="preload" as="image" href="assets/Mudanza-2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -38,18 +38,12 @@
       --slate: #4E5A6B;
       --cream: #FFF9F5;
       --card: #FFFEFC;
-      --shadow: 0 18px 50px rgba(75, 45, 39, .16);
       color-scheme: light;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
-    body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
 
     html {
       overflow: hidden;
@@ -68,22 +62,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    img,
-    svg {
-      display: block;
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
+    img, svg { display: block; }
 
     .skip {
       position: fixed;
@@ -97,16 +76,14 @@
       font-weight: 600;
       text-decoration: none;
     }
-
-    .skip:focus {
-      left: 10px;
-    }
+    .skip:focus { left: 10px; }
 
     :focus-visible {
       outline: 3px solid var(--mint);
       outline-offset: 3px;
     }
 
+    /* ===== Página: imagen a sangre completa ===== */
     .page {
       position: relative;
       display: flex;
@@ -114,26 +91,48 @@
       height: 100vh;
       height: 100dvh;
       overflow: hidden;
-      background:
-        radial-gradient(ellipse at 4% 8%, rgba(240, 118, 102, .17), transparent 29rem),
-        radial-gradient(ellipse at 96% 62%, rgba(112, 176, 166, .18), transparent 32rem),
-        radial-gradient(ellipse at 16% 96%, rgba(233, 188, 86, .13), transparent 26rem),
-        #FFF9F5;
+      background: #1a1410;
       isolation: isolate;
     }
 
-    .page::before {
-      content: "";
+    /* Imagen de fondo: cubre todo, anclada a la derecha */
+    .visual {
       position: absolute;
       inset: 0;
-      z-index: -1;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .visual img {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      object-fit: cover;
+      object-position: 70% 30%;
+      animation: fadeIn 1.1s ease both;
+    }
+
+    /* Vignette sutil SOLO para legibilidad (no lava la imagen) */
+    .scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
       pointer-events: none;
       background:
-        radial-gradient(circle at 78% 16%, rgba(255, 255, 255, .58) 0 3px, transparent 4px) 0 0 / 30px 30px,
-        radial-gradient(circle at 14% 72%, rgba(255, 255, 255, .5) 0 3px, transparent 4px) 0 0 / 34px 34px;
-      opacity: .5;
-      mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+        linear-gradient(90deg,
+          rgba(15, 12, 10, .55) 0%,
+          rgba(15, 12, 10, .32) 22%,
+          rgba(15, 12, 10, .12) 42%,
+          rgba(15, 12, 10, 0) 60%),
+        linear-gradient(0deg,
+          rgba(15, 12, 10, .45) 0%,
+          rgba(15, 12, 10, .12) 18%,
+          rgba(15, 12, 10, 0) 34%),
+        radial-gradient(80% 60% at 20% 100%, rgba(15, 12, 10, .35), transparent 70%);
     }
 
     .shell {
@@ -145,6 +144,7 @@
       padding-inline: clamp(18px, 4vw, 56px);
     }
 
+    /* ===== Topbar sobre imagen ===== */
     .topbar {
       display: flex;
       align-items: center;
@@ -156,13 +156,13 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      border-radius: 12px;
+      padding: 4px 2px;
     }
 
     .brand img {
       width: auto;
-      height: clamp(34px, 4.2vh, 48px);
-      filter: drop-shadow(0 6px 12px rgba(75, 45, 39, .1));
+      height: clamp(30px, 3.8vh, 42px);
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .4));
     }
 
     .socials {
@@ -178,9 +178,9 @@
       height: clamp(38px, 5.2vh, 46px);
       border-radius: 999px;
       color: var(--coral-deep);
-      background: rgba(255, 254, 252, .82);
-      border: 1px solid rgba(255, 255, 255, .95);
-      box-shadow: 0 10px 24px rgba(75, 45, 39, .12);
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(255, 255, 255, .6);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .22);
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       text-decoration: none;
@@ -191,7 +191,7 @@
       color: #fff;
       background: var(--coral-deep);
       transform: translateY(-3px);
-      box-shadow: 0 14px 28px rgba(217, 84, 74, .28);
+      box-shadow: 0 14px 28px rgba(217, 84, 74, .4);
     }
 
     .socials svg {
@@ -199,20 +199,22 @@
       height: clamp(17px, 2.3vh, 21px);
     }
 
+    /* ===== Contenido principal sobre imagen ===== */
     .hero-main {
       flex: 1;
       display: flex;
       align-items: center;
       min-height: 0;
-      padding-bottom: clamp(24px, 5vh, 58px);
+      padding-bottom: clamp(32px, 6vh, 72px);
     }
 
     .content {
       width: 100%;
-      max-width: 590px;
+      max-width: 600px;
       min-width: 0;
     }
 
+    /* Eyebrow con "cristal" para leerse sobre cualquier parte de la imagen */
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -220,14 +222,16 @@
       margin: 0 0 clamp(12px, 2.1vh, 20px);
       padding: 8px 15px;
       border-radius: 999px;
-      background: rgba(229, 244, 241, .92);
-      border: 1px solid rgba(112, 176, 166, .3);
-      color: #34766D;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(112, 176, 166, .35);
+      color: #2f6b62;
       font-size: clamp(.66rem, .84vw, .76rem);
       font-weight: 700;
       letter-spacing: .09em;
       text-transform: uppercase;
-      box-shadow: 0 6px 16px rgba(112, 176, 166, .12);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
     }
 
     .eyebrow::before {
@@ -236,30 +240,46 @@
       height: 7px;
       border-radius: 50%;
       background: var(--mint);
-      box-shadow: 0 0 0 4px rgba(112, 176, 166, .18);
+      box-shadow: 0 0 0 4px rgba(112, 176, 166, .22);
     }
 
+    /* Título con sombra fuerte para contraste, sin caja */
     h1 {
       margin: 0 0 clamp(12px, 2.1vh, 20px);
-      max-width: 600px;
+      max-width: 620px;
       font-size: clamp(2.3rem, 5vw, 4.15rem);
       line-height: 1.04;
       letter-spacing: -.052em;
       font-weight: 800;
       text-wrap: balance;
+      color: #fff;
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, .55),
+        0 8px 32px rgba(0, 0, 0, .35);
     }
 
     h1 span {
-      color: var(--coral-deep);
+      color: #FFE38A;
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, .6),
+        0 8px 32px rgba(0, 0, 0, .4);
     }
 
+    /* Lead sobre "cristal" para máxima legibilidad */
     .lead {
-      max-width: 46ch;
+      max-width: 48ch;
       margin: 0 0 clamp(20px, 3.4vh, 30px);
-      color: var(--slate);
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(20, 16, 14, .42);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+      backdrop-filter: blur(10px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, .14);
+      color: rgba(255, 255, 255, .94);
       font-size: clamp(.98rem, 1.15vw, 1.12rem);
       font-weight: 500;
-      line-height: 1.7;
+      line-height: 1.6;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
     }
 
     .actions {
@@ -277,16 +297,16 @@
       border-radius: 16px;
       background: #0F172A;
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, .16);
+      border: 1px solid rgba(255, 255, 255, .18);
       text-decoration: none;
-      box-shadow: 0 14px 32px rgba(15, 23, 42, .26);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .45);
       transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
     }
 
     .btn-playstore:hover {
       background: #1E293B;
       transform: translateY(-2px);
-      box-shadow: 0 18px 38px rgba(15, 23, 42, .32);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, .5);
     }
 
     .play-icon {
@@ -317,14 +337,21 @@
       white-space: nowrap;
     }
 
+    /* Nota con pill "cristal" */
     .note {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       margin: clamp(14px, 2.2vh, 20px) 0 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .82);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
       color: var(--slate);
-      font-size: clamp(.78rem, .9vw, .86rem);
-      font-weight: 500;
+      font-size: clamp(.76rem, .9vw, .84rem);
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .16);
     }
 
     .note::before {
@@ -333,140 +360,45 @@
       height: 7px;
       border-radius: 50%;
       background: var(--mint);
-      box-shadow: 0 0 0 4px rgba(112, 176, 166, .16);
+      box-shadow: 0 0 0 4px rgba(112, 176, 166, .22);
     }
 
-    .visual {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-    }
-
-    .visual::before,
-    .visual::after {
-      display: none;
-    }
-
-    /* La foto llena toda la pantalla; el rostro queda a la derecha, fuera de la zona del texto */
-    .visual img {
-      width: 100%;
-      height: 100%;
-      max-width: none;
-      max-height: none;
-      object-fit: cover;
-      object-position: 70% 30%;
-    }
-
-    .scrim {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg,
-          rgba(255, 249, 245, .985) 0%,
-          rgba(255, 249, 245, .96) 28%,
-          rgba(255, 249, 245, .86) 42%,
-          rgba(255, 249, 245, .54) 56%,
-          rgba(255, 249, 245, .14) 74%,
-          rgba(255, 249, 245, 0) 90%),
-        linear-gradient(0deg, rgba(255, 249, 245, .4), rgba(255, 249, 245, 0) 32%),
-        radial-gradient(60% 50% at 82% 20%, rgba(255, 247, 223, .14), transparent 70%);
-    }
-
-    .content>* {
-      animation: rise .75s cubic-bezier(.22, .8, .3, 1) both;
-    }
-
-    .content> :nth-child(2) {
-      animation-delay: .08s;
-    }
-
-    .content> :nth-child(3) {
-      animation-delay: .16s;
-    }
-
-    .content> :nth-child(4) {
-      animation-delay: .24s;
-    }
-
-    .content> :nth-child(5) {
-      animation-delay: .32s;
-    }
-
-    .visual {
-      animation: fadeIn 1.1s ease both;
-    }
+    /* Animaciones */
+    .content > * { animation: rise .75s cubic-bezier(.22, .8, .3, 1) both; }
+    .content > :nth-child(2) { animation-delay: .08s; }
+    .content > :nth-child(3) { animation-delay: .16s; }
+    .content > :nth-child(4) { animation-delay: .24s; }
+    .content > :nth-child(5) { animation-delay: .32s; }
 
     @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-
-      to {
-        opacity: 1;
-        transform: none;
-      }
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
     }
-
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
+    /* ===== Responsive ===== */
     @media (max-width: 860px) {
-      .page::before {
-        mask-image: none;
-        -webkit-mask-image: none;
-        opacity: .38;
-      }
-
-      .topbar {
-        padding-block: clamp(13px, 2.2vh, 20px);
-      }
-
-      .brand img {
-        height: clamp(30px, 6.6vw, 40px);
-      }
-
-      .socials a {
-        width: clamp(34px, 9vw, 42px);
-        height: clamp(34px, 9vw, 42px);
-      }
-
-      .socials svg {
-        width: clamp(16px, 4.4vw, 19px);
-        height: clamp(16px, 4.4vw, 19px);
-      }
-
-      h1 {
-        font-size: clamp(2rem, 8.6vw, 2.95rem);
-      }
-
-      .lead {
-        max-width: 43ch;
-        font-size: clamp(.94rem, 3.9vw, 1.04rem);
-        line-height: 1.6;
-      }
-
-      .play-title {
-        font-size: clamp(.95rem, 4vw, 1.08rem);
-      }
+      .topbar { padding-block: clamp(13px, 2.2vh, 20px); }
+      .brand img { height: clamp(26px, 6vw, 36px); }
+      .socials a { width: clamp(34px, 9vw, 42px); height: clamp(34px, 9vw, 42px); }
+      .socials svg { width: clamp(16px, 4.4vw, 19px); height: clamp(16px, 4.4vw, 19px); }
+      h1 { font-size: clamp(2rem, 8.6vw, 2.95rem); }
+      .lead { font-size: clamp(.94rem, 3.9vw, 1.04rem); line-height: 1.55; }
+      .play-title { font-size: clamp(.95rem, 4vw, 1.08rem); }
     }
 
+    /* Móvil vertical: la imagen se convierte en tarjeta con marco */
     @media (max-width: 860px) and (orientation: portrait) {
-      .scrim {
-        display: none;
+      .scrim { display: none; }
+
+      .page {
+        background:
+          radial-gradient(ellipse at 4% 8%, rgba(240, 118, 102, .15), transparent 26rem),
+          radial-gradient(ellipse at 96% 92%, rgba(112, 176, 166, .16), transparent 30rem),
+          var(--cream);
       }
 
       .visual {
@@ -478,7 +410,7 @@
         align-items: center;
         justify-content: center;
         width: auto;
-        height: clamp(170px, 34vh, 320px);
+        height: clamp(180px, 34vh, 320px);
         margin: 0 clamp(18px, 4vw, 56px);
         overflow: visible;
       }
@@ -523,6 +455,48 @@
         box-shadow: 0 30px 76px rgba(75, 45, 39, .2), 0 9px 26px rgba(217, 84, 74, .1);
       }
 
+      /* En móvil el texto vuelve a fondo claro (no hay imagen detrás) */
+      h1 {
+        color: var(--ink);
+        text-shadow: none;
+      }
+      h1 span { color: var(--coral-deep); text-shadow: none; }
+
+      .lead {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        color: var(--slate);
+        text-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+
+      .eyebrow {
+        background: rgba(229, 244, 241, .92);
+        box-shadow: 0 6px 16px rgba(112, 176, 166, .12);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+
+      .brand img {
+        filter: drop-shadow(0 2px 5px rgba(75, 45, 39, .16));
+      }
+
+      .socials a {
+        background: rgba(255, 254, 252, .82);
+        border-color: rgba(255, 255, 255, .95);
+        box-shadow: 0 10px 24px rgba(75, 45, 39, .12);
+      }
+
+      .note {
+        background: transparent;
+        box-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        padding: 0;
+      }
+
       .hero-main {
         display: flex;
         flex-direction: column;
@@ -532,159 +506,50 @@
         padding-bottom: clamp(18px, 3.4vh, 32px);
       }
 
-      .content {
-        max-width: 34rem;
-        margin-inline: auto;
-      }
+      .content { max-width: 34rem; margin-inline: auto; }
     }
 
     @media (max-width: 420px) {
-      h1 {
-        letter-spacing: -.046em;
-      }
-
-      .eyebrow {
-        letter-spacing: .07em;
-        padding: 7px 12px;
-      }
-
-      .btn-playstore {
-        border-radius: 14px;
-      }
+      h1 { letter-spacing: -.046em; }
+      .eyebrow { letter-spacing: .07em; padding: 7px 12px; }
+      .btn-playstore { border-radius: 14px; }
     }
 
     @media (max-height: 700px) {
-      .eyebrow {
-        margin-bottom: 10px;
-        padding: 6px 12px;
-      }
-
-      h1 {
-        margin-bottom: 10px;
-      }
-
-      .lead {
-        margin-bottom: 14px;
-        line-height: 1.52;
-      }
-
-      .note {
-        margin-top: 12px;
-      }
+      .eyebrow { margin-bottom: 10px; padding: 6px 12px; }
+      h1 { margin-bottom: 10px; }
+      .lead { margin-bottom: 14px; line-height: 1.5; padding: 12px 16px; }
+      .note { margin-top: 12px; }
     }
 
     @media (max-height: 640px) and (orientation: portrait) {
-      .visual {
-        height: clamp(130px, 29vh, 190px);
-      }
-
-      .eyebrow {
-        display: none;
-      }
-
-      h1 {
-        font-size: clamp(1.72rem, 8vw, 2.3rem);
-      }
-
-      .lead {
-        font-size: clamp(.88rem, 3.6vw, .96rem);
-        margin-bottom: 12px;
-      }
-
-      .note {
-        display: none;
-      }
-
-      .btn-playstore {
-        padding: 9px 18px;
-      }
-
-      .play-icon {
-        width: 22px;
-        height: 22px;
-      }
+      .visual { height: clamp(130px, 29vh, 190px); }
+      .eyebrow { display: none; }
+      h1 { font-size: clamp(1.72rem, 8vw, 2.3rem); }
+      .lead { font-size: clamp(.88rem, 3.6vw, .96rem); margin-bottom: 12px; }
+      .note { display: none; }
+      .btn-playstore { padding: 9px 18px; }
+      .play-icon { width: 22px; height: 22px; }
     }
 
     @media (max-height: 500px) and (orientation: landscape) {
-      .scrim {
-        background:
-          linear-gradient(90deg,
-            rgba(255, 249, 245, .99) 0%,
-            rgba(255, 249, 245, .96) 34%,
-            rgba(255, 249, 245, .8) 48%,
-            rgba(255, 249, 245, .36) 64%,
-            rgba(255, 249, 245, .05) 84%,
-            rgba(255, 249, 245, 0) 94%),
-          linear-gradient(0deg, rgba(255, 249, 245, .35), rgba(255, 249, 245, 0) 40%);
-      }
-
-      .hero-main {
-        padding-bottom: 10px;
-      }
-
-      .topbar {
-        padding-block: 10px;
-      }
-
-      .brand img {
-        height: 28px;
-      }
-
-      .socials a {
-        width: 32px;
-        height: 32px;
-      }
-
-      .socials svg {
-        width: 15px;
-        height: 15px;
-      }
-
-      .content {
-        max-width: min(500px, 58vw);
-      }
-
-      .eyebrow,
-      .note {
-        display: none;
-      }
-
-      h1 {
-        margin-bottom: 8px;
-        font-size: clamp(1.7rem, 4.2vw, 2.5rem);
-      }
-
-      .lead {
-        margin-bottom: 12px;
-        font-size: clamp(.8rem, 1.6vw, .94rem);
-        line-height: 1.45;
-      }
-
-      .btn-playstore {
-        padding: 8px 16px;
-        gap: 10px;
-        border-radius: 12px;
-      }
-
-      .play-icon {
-        width: 22px;
-        height: 22px;
-      }
-
-      .play-subtitle {
-        font-size: .54rem;
-      }
-
-      .play-title {
-        font-size: .92rem;
-      }
+      .hero-main { padding-bottom: 10px; }
+      .topbar { padding-block: 10px; }
+      .brand img { height: 26px; }
+      .socials a { width: 32px; height: 32px; }
+      .socials svg { width: 15px; height: 15px; }
+      .content { max-width: min(520px, 60vw); }
+      .eyebrow, .note { display: none; }
+      h1 { margin-bottom: 8px; font-size: clamp(1.7rem, 4.2vw, 2.5rem); }
+      .lead { margin-bottom: 12px; font-size: clamp(.8rem, 1.6vw, .94rem); line-height: 1.45; padding: 10px 14px; }
+      .btn-playstore { padding: 8px 16px; gap: 10px; border-radius: 12px; }
+      .play-icon { width: 22px; height: 22px; }
+      .play-subtitle { font-size: .54rem; }
+      .play-title { font-size: .92rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
@@ -692,7 +557,7 @@
       }
     }
 
-    /* ===== Barra legal discreta (aviso de privacidad + eliminar cuenta) ===== */
+    /* ===== Barra legal discreta ===== */
     .legal-bar {
       position: fixed;
       left: 0;
@@ -707,34 +572,48 @@
       pointer-events: none;
     }
 
-    .legal-bar a,
-    .legal-bar span {
-      pointer-events: auto;
-    }
+    .legal-bar a, .legal-bar span { pointer-events: auto; }
 
     .legal-bar a {
-      color: rgba(78, 90, 107, .55);
+      color: rgba(255, 255, 255, .75);
       font-size: 11px;
       font-weight: 500;
       letter-spacing: .02em;
       text-decoration: none;
-      border-bottom: 1px dotted rgba(78, 90, 107, .35);
+      border-bottom: 1px dotted rgba(255, 255, 255, .45);
       padding-bottom: 1px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
       transition: color .2s ease, border-color .2s ease;
     }
 
     .legal-bar a:hover,
     .legal-bar a:focus-visible {
-      color: var(--coral-deep);
-      border-bottom-color: var(--coral-deep);
+      color: #fff;
+      border-bottom-color: #fff;
     }
 
     .legal-sep {
-      color: rgba(78, 90, 107, .3);
+      color: rgba(255, 255, 255, .45);
       font-size: 11px;
       user-select: none;
     }
 
+    /* En móvil el fondo es claro, así que la barra legal cambia a gris oscuro */
+    @media (max-width: 860px) and (orientation: portrait) {
+      .legal-bar a {
+        color: rgba(78, 90, 107, .55);
+        border-bottom-color: rgba(78, 90, 107, .35);
+        text-shadow: none;
+      }
+      .legal-bar a:hover,
+      .legal-bar a:focus-visible {
+        color: var(--coral-deep);
+        border-bottom-color: var(--coral-deep);
+      }
+      .legal-sep { color: rgba(78, 90, 107, .3); }
+    }
+
+    /* ===== Modal del aviso de privacidad ===== */
     .legal-modal {
       position: fixed;
       inset: 0;
@@ -748,10 +627,7 @@
       backdrop-filter: blur(6px);
     }
 
-    .legal-modal.is-open {
-      display: flex;
-      animation: fadeIn .2s ease both;
-    }
+    .legal-modal.is-open { display: flex; animation: fadeIn .2s ease both; }
 
     .legal-card {
       position: relative;
@@ -768,36 +644,12 @@
       line-height: 1.65;
     }
 
-    .legal-card h2 {
-      margin: 0 0 6px;
-      font-size: clamp(1.25rem, 2.4vw, 1.5rem);
-      letter-spacing: -.02em;
-    }
-
-    .legal-card h3 {
-      margin: 20px 0 6px;
-      font-size: 1rem;
-      letter-spacing: -.01em;
-    }
-
-    .legal-card p {
-      margin: 0 0 10px;
-      color: var(--slate);
-    }
-
-    .legal-card ul {
-      margin: 0 0 10px;
-      padding-left: 20px;
-      color: var(--slate);
-    }
-
-    .legal-card li {
-      margin-bottom: 4px;
-    }
-
-    .legal-card a {
-      color: var(--coral-deep);
-    }
+    .legal-card h2 { margin: 0 0 6px; font-size: clamp(1.25rem, 2.4vw, 1.5rem); letter-spacing: -.02em; }
+    .legal-card h3 { margin: 20px 0 6px; font-size: 1rem; letter-spacing: -.01em; }
+    .legal-card p { margin: 0 0 10px; color: var(--slate); }
+    .legal-card ul { margin: 0 0 10px; padding-left: 20px; color: var(--slate); }
+    .legal-card li { margin-bottom: 4px; }
+    .legal-card a { color: var(--coral-deep); }
 
     .legal-close {
       position: absolute;
@@ -817,24 +669,205 @@
       transition: background-color .2s ease, transform .2s ease;
     }
 
-    .legal-close:hover {
-      background: rgba(217, 84, 74, .14);
-      transform: rotate(90deg);
+    .legal-close:hover { background: rgba(217, 84, 74, .14); transform: rotate(90deg); }
+
+    body.legal-open { overflow: hidden; }
+
+
+    /* ===== UniHome visual refinement: full-bleed, editorial and less boxy ===== */
+    .page { background: #211a17; }
+
+    .visual img {
+      object-position: 72% center;
+      transform: scale(1.015);
     }
 
-    body.legal-open {
-      overflow: hidden;
+    .scrim {
+      background:
+        linear-gradient(90deg,
+          rgba(22, 20, 19, .76) 0%,
+          rgba(22, 20, 19, .61) 24%,
+          rgba(22, 20, 19, .32) 43%,
+          rgba(22, 20, 19, .06) 66%,
+          transparent 78%),
+        linear-gradient(0deg, rgba(22, 20, 19, .34) 0%, transparent 24%);
     }
 
-    @media (max-height: 640px) and (orientation: portrait) {
-      .legal-bar {
-        padding-bottom: 6px;
+    .topbar { padding-top: clamp(18px, 3vh, 30px); }
+
+    /* Logo transparente, sin fondo, solo con una sombra suave para contraste. */
+    .brand {
+      padding: 4px 2px;
+      transition: transform .2s ease;
+    }
+    .brand:hover { transform: translateY(-1px); }
+    .brand img { filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .4)); height: clamp(31px, 4vh, 43px); }
+
+    .socials { gap: 10px; }
+    .socials a {
+      color: #fff;
+      background: rgba(24, 27, 31, .30);
+      border: 1px solid rgba(255, 255, 255, .62);
+      box-shadow: 0 7px 22px rgba(0, 0, 0, .14);
+      -webkit-backdrop-filter: blur(9px);
+      backdrop-filter: blur(9px);
+    }
+    .socials a:hover { background: var(--coral-deep); border-color: var(--coral-deep); }
+
+    .hero-main { padding-bottom: clamp(48px, 8vh, 88px); }
+    .content { max-width: 630px; }
+
+    /* Remove the stacked pills/cards: text sits directly over the image and scrim. */
+    .eyebrow {
+      padding: 0;
+      margin-bottom: clamp(16px, 2.4vh, 24px);
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: #F6C8A9;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      font-size: clamp(.72rem, .9vw, .82rem);
+      letter-spacing: .15em;
+    }
+    .eyebrow::before {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(233, 188, 86, .18);
+    }
+
+    h1 {
+      max-width: 650px;
+      margin-bottom: clamp(17px, 2.5vh, 25px);
+      font-size: clamp(2.55rem, 5.25vw, 4.55rem);
+      line-height: 1.045;
+      letter-spacing: -.055em;
+      text-shadow: 0 3px 15px rgba(0, 0, 0, .36), 0 12px 38px rgba(0, 0, 0, .24);
+    }
+    h1 span { color: #FFD58A; }
+
+    .lead {
+      max-width: 47ch;
+      margin-bottom: clamp(24px, 3.6vh, 34px);
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, .94);
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      font-size: clamp(1rem, 1.2vw, 1.16rem);
+      line-height: 1.68;
+      font-weight: 450;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, .48);
+    }
+
+    .btn-playstore {
+      min-height: 60px;
+      padding: 13px 25px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 15px;
+      background: #0F172A;
+      box-shadow: 0 13px 30px rgba(8, 12, 22, .42);
+    }
+    .btn-playstore:hover {
+      background: var(--coral-deep);
+      border-color: rgba(255, 255, 255, .26);
+      box-shadow: 0 17px 36px rgba(83, 30, 25, .34);
+    }
+    .play-subtitle { color: rgba(255, 255, 255, .72); }
+    .play-title { color: #fff; }
+
+    .note {
+      display: block;
+      width: fit-content;
+      margin-top: 18px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, .82);
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      font-size: .82rem;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .4);
+    }
+    .note::before { display: none; }
+
+    .legal-bar { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+    .legal-bar a { color: rgba(255, 255, 255, .82); }
+
+    @media (max-width: 860px) and (orientation: portrait) {
+      .page {
+        background:
+          radial-gradient(ellipse at 8% 12%, rgba(240, 118, 102, .13), transparent 25rem),
+          radial-gradient(ellipse at 95% 85%, rgba(112, 176, 166, .16), transparent 27rem),
+          var(--cream);
       }
-
-      .legal-bar a {
-        font-size: 10px;
+      .scrim { display: none; }
+      .topbar { padding-top: max(12px, env(safe-area-inset-top)); }
+      .brand { padding: 2px; }
+      .brand img { filter: drop-shadow(0 2px 5px rgba(75, 45, 39, .16)); height: clamp(26px, 7vw, 34px); }
+      .socials a {
+        color: var(--coral-deep);
+        background: rgba(255, 254, 252, .92);
+        border: 1px solid rgba(217, 84, 74, .10);
+        box-shadow: 0 7px 18px rgba(75, 45, 39, .10);
       }
+      .visual { height: clamp(170px, 31vh, 285px); }
+      .visual img { transform: none; }
+      .hero-main {
+        gap: 0;
+        padding-top: clamp(4px, 1vh, 12px);
+        padding-bottom: max(42px, calc(env(safe-area-inset-bottom) + 34px));
+      }
+      .eyebrow {
+        display: inline-flex;
+        margin-bottom: 12px;
+        color: #568E84;
+        font-size: .68rem;
+      }
+      .eyebrow::before { width: 7px; height: 7px; }
+      h1 {
+        max-width: 13ch;
+        margin-bottom: 13px;
+        color: var(--ink);
+        font-size: clamp(2rem, 8.1vw, 2.85rem);
+        line-height: 1.06;
+        text-shadow: none;
+      }
+      h1 span { color: var(--coral-deep); text-shadow: none; }
+      .lead {
+        max-width: 44ch;
+        margin-bottom: 19px;
+        color: #526071;
+        font-size: clamp(.92rem, 3.7vw, 1.02rem);
+        line-height: 1.55;
+        text-shadow: none;
+      }
+      .note { margin-top: 12px; color: #6B7280; text-shadow: none; }
+      .btn-playstore { min-height: 54px; padding: 11px 20px; }
+      .legal-bar { padding-bottom: max(8px, env(safe-area-inset-bottom)); }
     }
+
+    @media (max-width: 380px) and (orientation: portrait) {
+      .visual { height: clamp(145px, 27vh, 210px); }
+      .hero-main { padding-bottom: max(38px, calc(env(safe-area-inset-bottom) + 30px)); }
+      .eyebrow { display: none; }
+      h1 { font-size: clamp(1.85rem, 7.8vw, 2.2rem); }
+      .lead { font-size: .9rem; margin-bottom: 14px; }
+      .note { display: none; }
+    }
+
+    @media (max-height: 700px) and (min-width: 861px) {
+      .hero-main { padding-bottom: 34px; }
+      h1 { font-size: clamp(2.2rem, 4.5vw, 3.7rem); }
+      .lead { margin-bottom: 17px; }
+    }
+
   </style>
 </head>
 
@@ -886,10 +919,8 @@
     <main class="shell hero-main" id="contenido">
       <div class="content">
         <p class="eyebrow">Cerca del campus. Cerca de ti.</p>
-        <h1>Irte lejos duele menos <span>cuando ya tienes dónde llegar.</span></h1>
-        <p class="lead">Con arrendadores verificados, para que comiences esta nueva etapa con mayor tranquilidad. Tu próximo hogar está más cerca
-          de lo que imaginas.
-          </p>
+        <h1>Estudia lejos. <span>Siéntete como en casa.</span></h1>
+        <p class="lead">Alojamientos universitarios con arrendadores 100% verificados.</p>
         <div class="actions">
           <a class="btn-playstore" href="#" data-link="googlePlay" aria-label="Descargar UniHome en Google Play">
             <svg class="play-icon" viewBox="0 0 512 512" aria-hidden="true">
@@ -988,7 +1019,6 @@
         element.style.cursor = "default";
       }
 
-      // Tracking para GTM / GA4
       element.addEventListener("click", function () {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({

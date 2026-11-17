@@ -3,547 +3,881 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UniHome · Tu nueva etapa empieza en casa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>UniHome · Lejos de casa, pero con un lugar que te espera</title>
   <meta name="description"
-    content="Encuentra tu espacio universitario cerca del campus, con arrendadores verificados. Descarga UniHome en Google Play.">
+    content="Espacios seguros y cómodos junto a tu universidad, con arrendadores verificados. Tú empaca las cajas; nosotros te ayudamos a saber dónde desempacarlas. Descarga UniHome en Google Play.">
+  <meta name="theme-color" content="#FFF9F5">
   <link rel="icon" href="assets/favicon.png">
+  <link rel="preload" as="image" href="assets/Mudanza-2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TVZ5B4GS');</script>
+  <!-- End Google Tag Manager -->
+
   <style>
     :root {
-      --ink: #0f172a;
-      --slate: #64748b;
-      --line: #e7edf3;
-      --soft: #f8fafc;
-      --bg: #fff;
-      --card: #fff;
-      --coral: #d9544a;
-      --coral-deep: #b54138;
-      --coral-soft: #fff0ed;
-      --mint: #70b0a6;
-      --mint-soft: #e5f4f1;
-      --gold-soft: #fff7df;
-      --shadow: 0 8px 24px rgba(15, 23, 42, .08);
-      color-scheme: light dark
+      --coral: #F07666;
+      --coral-deep: #D9544A;
+      --coral-soft: #FFF0ED;
+      --mint: #70B0A6;
+      --mint-soft: #E5F4F1;
+      --gold: #E9BC56;
+      --gold-soft: #FFF7DF;
+      --ink: #0F172A;
+      --slate: #4E5A6B;
+      --cream: #FFF9F5;
+      --card: #FFFEFC;
+      color-scheme: light;
     }
 
-    @media (prefers-color-scheme:dark) {
-      :root {
-        --ink: #f1f5f9;
-        --slate: #9fb0c3;
-        --line: #26324a;
-        --soft: #111a2e;
-        --bg: #0b1220;
-        --card: #131c31;
-        --coral-deep: #f4958c;
-        --coral-soft: #2a1a1c;
-        --mint-soft: #12302c;
-        --gold-soft: #2c2614;
-        --shadow: 0 8px 24px rgba(0, 0, 0, .35)
-      }
-    }
+    * { box-sizing: border-box; }
 
-    * {
-      box-sizing: border-box
-    }
+    html, body { height: 100%; }
 
     html {
-      scroll-behavior: smooth
+      overflow: hidden;
+      background: var(--cream);
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
       margin: 0;
+      overflow: hidden;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       color: var(--ink);
-      background: var(--bg);
-      line-height: 1.6
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block
-    }
-
-    a {
-      color: var(--coral-deep)
-    }
-
-    .wrap {
-      max-width: 1060px;
-      margin: 0 auto;
-      padding: 0 20px
-    }
+    img, svg { display: block; }
 
     .skip {
-      position: absolute;
+      position: fixed;
       left: -999px;
-      top: 8px;
+      top: 10px;
+      z-index: 30;
+      padding: 10px 16px;
+      border-radius: 10px;
       background: var(--ink);
-      color: var(--bg);
-      padding: 8px 14px;
-      border-radius: 8px;
-      z-index: 20
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
     }
-
-    .skip:focus {
-      left: 8px
-    }
+    .skip:focus { left: 10px; }
 
     :focus-visible {
       outline: 3px solid var(--mint);
-      outline-offset: 3px
+      outline-offset: 3px;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: color-mix(in srgb, var(--bg) 92%, transparent);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line)
+    /* ===== Página: imagen a sangre completa ===== */
+    .page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background: #1a1410;
+      isolation: isolate;
     }
 
-    .bar {
+    /* Imagen de fondo: cubre todo, anclada a la derecha */
+    .visual {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .visual img {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      object-fit: cover;
+      object-position: 70% 30%;
+      animation: fadeIn 1.1s ease both;
+    }
+
+    /* Vignette sutil SOLO para legibilidad (no lava la imagen) */
+    .scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg,
+          rgba(15, 12, 10, .55) 0%,
+          rgba(15, 12, 10, .32) 22%,
+          rgba(15, 12, 10, .12) 42%,
+          rgba(15, 12, 10, 0) 60%),
+        linear-gradient(0deg,
+          rgba(15, 12, 10, .45) 0%,
+          rgba(15, 12, 10, .12) 18%,
+          rgba(15, 12, 10, 0) 34%),
+        radial-gradient(80% 60% at 20% 100%, rgba(15, 12, 10, .35), transparent 70%);
+    }
+
+    .shell {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-inline: clamp(18px, 4vw, 56px);
+    }
+
+    /* ===== Topbar sobre imagen ===== */
+    .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      min-height: 64px
+      gap: 18px;
+      padding-block: clamp(16px, 3.2vh, 28px);
     }
 
-    .bar img {
-      height: 34px;
-      width: auto
-    }
-
-    nav {
-      display: flex;
-      gap: 22px;
-      font-size: .92rem;
-      font-weight: 600
-    }
-
-    nav a {
-      color: var(--slate);
-      text-decoration: none
-    }
-
-    nav a:hover {
-      color: var(--ink)
-    }
-
-    .btn {
+    .brand {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--coral);
-      color: #fff;
-      font: 700 1.2rem/1 Inter, system-ui, sans-serif;
-      padding: 17px 28px;
-      border-radius: 16px;
-      border: 0;
-      text-decoration: none;
-      box-shadow: 0 8px 20px rgba(217, 84, 74, .28);
-      min-height: 56px
+      padding: 4px 2px;
     }
 
-    .btn:hover {
-      filter: brightness(.95)
+    .brand img {
+      width: auto;
+      height: clamp(30px, 3.8vh, 42px);
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .4));
     }
 
-    .btn.sm {
-      font-size: .95rem;
-      padding: 10px 18px;
-      min-height: 44px;
-      box-shadow: none;
-      background: #b54138
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: clamp(8px, 1vw, 12px);
     }
 
-    .btn[aria-disabled="true"] {
-      background: var(--slate);
-      box-shadow: none;
-      cursor: not-allowed
-    }
-
-    .hero {
-      padding: 48px 0 40px;
+    .socials a {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 40px;
-      align-items: center
-    }
-
-    .eyebrow {
-      margin: 0 0 14px;
+      place-items: center;
+      width: clamp(38px, 5.2vh, 46px);
+      height: clamp(38px, 5.2vh, 46px);
+      border-radius: 999px;
       color: var(--coral-deep);
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(255, 255, 255, .6);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .22);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      text-decoration: none;
+      transition: transform .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease;
     }
 
+    .socials a:hover {
+      color: #fff;
+      background: var(--coral-deep);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(217, 84, 74, .4);
+    }
+
+    .socials svg {
+      width: clamp(17px, 2.3vh, 21px);
+      height: clamp(17px, 2.3vh, 21px);
+    }
+
+    /* ===== Contenido principal sobre imagen ===== */
+    .hero-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      min-height: 0;
+      padding-bottom: clamp(32px, 6vh, 72px);
+    }
+
+    .content {
+      width: 100%;
+      max-width: 600px;
+      min-width: 0;
+    }
+
+    /* Eyebrow con "cristal" para leerse sobre cualquier parte de la imagen */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 clamp(12px, 2.1vh, 20px);
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(112, 176, 166, .35);
+      color: #2f6b62;
+      font-size: clamp(.66rem, .84vw, .76rem);
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 4px rgba(112, 176, 166, .22);
+    }
+
+    /* Título con sombra fuerte para contraste, sin caja */
     h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.2rem, 5.4vw, 3.6rem);
-      line-height: 1.08;
-      letter-spacing: -.03em;
-      font-weight: 800
+      margin: 0 0 clamp(12px, 2.1vh, 20px);
+      max-width: 620px;
+      font-size: clamp(2.3rem, 5vw, 4.15rem);
+      line-height: 1.04;
+      letter-spacing: -.052em;
+      font-weight: 800;
+      text-wrap: balance;
+      color: #fff;
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, .55),
+        0 8px 32px rgba(0, 0, 0, .35);
     }
 
     h1 span {
-      color: var(--coral)
+      color: #FFE38A;
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, .6),
+        0 8px 32px rgba(0, 0, 0, .4);
     }
 
+    /* Lead sobre "cristal" para máxima legibilidad */
     .lead {
-      font-size: 1.15rem;
-      color: var(--slate);
-      max-width: 34ch;
-      margin: 0 0 28px
+      max-width: 48ch;
+      margin: 0 0 clamp(20px, 3.4vh, 30px);
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(20, 16, 14, .42);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+      backdrop-filter: blur(10px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, .14);
+      color: rgba(255, 255, 255, .94);
+      font-size: clamp(.98rem, 1.15vw, 1.12rem);
+      font-weight: 500;
+      line-height: 1.6;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
     }
 
-    .note {
-      margin: 14px 0 0;
-      font-size: .9rem;
-      color: var(--slate)
-    }
-
-    .chips {
+    .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 26px 0 0;
-      padding: 0;
-      list-style: none
+      align-items: center;
+      gap: 14px;
     }
 
-    .chips li {
-      background: var(--mint-soft);
-      color: var(--ink);
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-size: .88rem;
-      font-weight: 600
+    .btn-playstore {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: clamp(11px, 1.7vh, 15px) clamp(20px, 2.4vw, 28px);
+      border-radius: 16px;
+      background: #0F172A;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .18);
+      text-decoration: none;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .45);
+      transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
     }
 
-    .phone {
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: #fff;
-      width: 100%;
-      max-width: 290px;
-      margin: 0 auto
+    .btn-playstore:hover {
+      background: #1E293B;
+      transform: translateY(-2px);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, .5);
     }
 
-    section {
-      padding: 56px 0
+    .play-icon {
+      flex-shrink: 0;
+      width: clamp(24px, 3.4vh, 30px);
+      height: clamp(24px, 3.4vh, 30px);
     }
 
-    .alt {
-      background: var(--soft)
+    .play-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.15;
     }
 
-    h2 {
-      margin: 0 0 10px;
-      font-size: clamp(1.6rem, 3.4vw, 2.2rem);
-      letter-spacing: -.02em;
-      line-height: 1.2
-    }
-
-    .sub {
-      color: var(--slate);
-      margin: 0 0 32px;
-      max-width: 60ch
-    }
-
-    .grid {
-      display: grid;
-      gap: 18px;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr))
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px;
-      box-shadow: var(--shadow)
-    }
-
-    .card h3 {
-      margin: 0 0 6px;
-      font-size: 1.05rem
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--slate);
-      font-size: .97rem
-    }
-
-    .num {
-      display: inline-grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--coral-soft);
-      color: var(--coral-deep);
-      font-weight: 800;
-      margin-bottom: 12px
-    }
-
-    .shots {
-      display: grid;
-      gap: 24px;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      margin-top: 44px
-    }
-
-    figure {
-      margin: 0;
-      text-align: center
-    }
-
-    figcaption {
-      margin-top: 12px;
+    .play-subtitle {
+      color: #94A3B8;
+      font-size: clamp(.6rem, .12vw + .5rem, .68rem);
       font-weight: 600;
-      font-size: .95rem
+      letter-spacing: .1em;
+      text-transform: uppercase;
     }
 
-    .legal {
-      max-width: 760px
+    .play-title {
+      font-size: clamp(1rem, 1.3vw, 1.18rem);
+      font-weight: 700;
+      letter-spacing: -.01em;
+      white-space: nowrap;
     }
 
-    .legal h3 {
-      margin: 26px 0 6px;
-      font-size: 1.05rem
-    }
-
-    .legal p,
-    .legal li {
-      color: var(--slate)
-    }
-
-    .pend {
-      background: var(--gold-soft);
-      border-radius: 6px;
-      padding: 0 6px;
-      color: var(--ink);
-      font-weight: 600
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 30px 0;
+    /* Nota con pill "cristal" */
+    .note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: clamp(14px, 2.2vh, 20px) 0 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .82);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
       color: var(--slate);
-      font-size: .92rem
+      font-size: clamp(.76rem, .9vw, .84rem);
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .16);
     }
 
-    footer .wrap {
+    .note::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 4px rgba(112, 176, 166, .22);
+    }
+
+    /* Animaciones */
+    .content > * { animation: rise .75s cubic-bezier(.22, .8, .3, 1) both; }
+    .content > :nth-child(2) { animation-delay: .08s; }
+    .content > :nth-child(3) { animation-delay: .16s; }
+    .content > :nth-child(4) { animation-delay: .24s; }
+    .content > :nth-child(5) { animation-delay: .32s; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 860px) {
+      .topbar { padding-block: clamp(13px, 2.2vh, 20px); }
+      .brand img { height: clamp(26px, 6vw, 36px); }
+      .socials a { width: clamp(34px, 9vw, 42px); height: clamp(34px, 9vw, 42px); }
+      .socials svg { width: clamp(16px, 4.4vw, 19px); height: clamp(16px, 4.4vw, 19px); }
+      h1 { font-size: clamp(2rem, 8.6vw, 2.95rem); }
+      .lead { font-size: clamp(.94rem, 3.9vw, 1.04rem); line-height: 1.55; }
+      .play-title { font-size: clamp(.95rem, 4vw, 1.08rem); }
+    }
+
+    /* Móvil vertical: la imagen se convierte en tarjeta con marco */
+    @media (max-width: 860px) and (orientation: portrait) {
+      .scrim { display: none; }
+
+      .page {
+        background:
+          radial-gradient(ellipse at 4% 8%, rgba(240, 118, 102, .15), transparent 26rem),
+          radial-gradient(ellipse at 96% 92%, rgba(112, 176, 166, .16), transparent 30rem),
+          var(--cream);
+      }
+
+      .visual {
+        position: relative;
+        inset: auto;
+        z-index: 1;
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: clamp(180px, 34vh, 320px);
+        margin: 0 clamp(18px, 4vw, 56px);
+        overflow: visible;
+      }
+
+      .visual::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 0;
+        inset: 2% 3% 2% 3%;
+        border-radius: 45% 55% 61% 39% / 47% 41% 59% 53%;
+        background: linear-gradient(145deg, rgba(229, 244, 241, .98) 0%, rgba(255, 247, 223, .82) 58%, rgba(240, 118, 102, .12) 100%);
+        transform: rotate(-3deg);
+        box-shadow: 0 26px 60px rgba(112, 176, 166, .12);
+      }
+
+      .visual::after {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 0;
+        right: 3%;
+        bottom: -2%;
+        width: clamp(46px, 11vw, 72px);
+        aspect-ratio: 1;
+        border-radius: 35% 65% 55% 45%;
+        background: linear-gradient(145deg, #FFF7DF, #F1D583);
+        box-shadow: 0 16px 30px rgba(233, 188, 86, .22);
+        transform: rotate(16deg);
+      }
+
+      .visual img {
+        position: relative;
+        z-index: 1;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: clamp(20px, 2.4vw, 32px);
+        border: clamp(5px, .55vw, 8px) solid rgba(255, 255, 255, .94);
+        box-shadow: 0 30px 76px rgba(75, 45, 39, .2), 0 9px 26px rgba(217, 84, 74, .1);
+      }
+
+      /* En móvil el texto vuelve a fondo claro (no hay imagen detrás) */
+      h1 {
+        color: var(--ink);
+        text-shadow: none;
+      }
+      h1 span { color: var(--coral-deep); text-shadow: none; }
+
+      .lead {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        color: var(--slate);
+        text-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+
+      .eyebrow {
+        background: rgba(229, 244, 241, .92);
+        box-shadow: 0 6px 16px rgba(112, 176, 166, .12);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+
+      .brand img {
+        filter: drop-shadow(0 2px 5px rgba(75, 45, 39, .16));
+      }
+
+      .socials a {
+        background: rgba(255, 254, 252, .82);
+        border-color: rgba(255, 255, 255, .95);
+        box-shadow: 0 10px 24px rgba(75, 45, 39, .12);
+      }
+
+      .note {
+        background: transparent;
+        box-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        padding: 0;
+      }
+
+      .hero-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: clamp(14px, 2.4vh, 22px);
+        padding-bottom: clamp(18px, 3.4vh, 32px);
+      }
+
+      .content { max-width: 34rem; margin-inline: auto; }
+    }
+
+    @media (max-width: 420px) {
+      h1 { letter-spacing: -.046em; }
+      .eyebrow { letter-spacing: .07em; padding: 7px 12px; }
+      .btn-playstore { border-radius: 14px; }
+    }
+
+    @media (max-height: 700px) {
+      .eyebrow { margin-bottom: 10px; padding: 6px 12px; }
+      h1 { margin-bottom: 10px; }
+      .lead { margin-bottom: 14px; line-height: 1.5; padding: 12px 16px; }
+      .note { margin-top: 12px; }
+    }
+
+    @media (max-height: 640px) and (orientation: portrait) {
+      .visual { height: clamp(130px, 29vh, 190px); }
+      .eyebrow { display: none; }
+      h1 { font-size: clamp(1.72rem, 8vw, 2.3rem); }
+      .lead { font-size: clamp(.88rem, 3.6vw, .96rem); margin-bottom: 12px; }
+      .note { display: none; }
+      .btn-playstore { padding: 9px 18px; }
+      .play-icon { width: 22px; height: 22px; }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero-main { padding-bottom: 10px; }
+      .topbar { padding-block: 10px; }
+      .brand img { height: 26px; }
+      .socials a { width: 32px; height: 32px; }
+      .socials svg { width: 15px; height: 15px; }
+      .content { max-width: min(520px, 60vw); }
+      .eyebrow, .note { display: none; }
+      h1 { margin-bottom: 8px; font-size: clamp(1.7rem, 4.2vw, 2.5rem); }
+      .lead { margin-bottom: 12px; font-size: clamp(.8rem, 1.6vw, .94rem); line-height: 1.45; padding: 10px 14px; }
+      .btn-playstore { padding: 8px 16px; gap: 10px; border-radius: 12px; }
+      .play-icon { width: 22px; height: 22px; }
+      .play-subtitle { font-size: .54rem; }
+      .play-title { font-size: .92rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ===== Barra legal discreta ===== */
+    .legal-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px 24px;
-      justify-content: space-between;
-      align-items: center
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 6px clamp(14px, 4vw, 56px) 10px;
+      pointer-events: none;
     }
 
-    @media (max-width:820px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: left
-      }
+    .legal-bar a, .legal-bar span { pointer-events: auto; }
 
-      nav {
-        display: none
-      }
-
-      .hero .phone {
-        max-width: 260px
-      }
+    .legal-bar a {
+      color: rgba(255, 255, 255, .75);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .02em;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(255, 255, 255, .45);
+      padding-bottom: 1px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+      transition: color .2s ease, border-color .2s ease;
     }
 
-    @media (prefers-reduced-motion:reduce) {
-      html {
-        scroll-behavior: auto
-      }
+    .legal-bar a:hover,
+    .legal-bar a:focus-visible {
+      color: #fff;
+      border-bottom-color: #fff;
     }
+
+    .legal-sep {
+      color: rgba(255, 255, 255, .45);
+      font-size: 11px;
+      user-select: none;
+    }
+
+    /* En móvil el fondo es claro, así que la barra legal cambia a gris oscuro */
+    @media (max-width: 860px) and (orientation: portrait) {
+      .legal-bar a {
+        color: rgba(78, 90, 107, .55);
+        border-bottom-color: rgba(78, 90, 107, .35);
+        text-shadow: none;
+      }
+      .legal-bar a:hover,
+      .legal-bar a:focus-visible {
+        color: var(--coral-deep);
+        border-bottom-color: var(--coral-deep);
+      }
+      .legal-sep { color: rgba(78, 90, 107, .3); }
+    }
+
+    /* ===== Modal del aviso de privacidad ===== */
+    .legal-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(14px, 3vw, 32px);
+      background: rgba(15, 23, 42, .55);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    .legal-modal.is-open { display: flex; animation: fadeIn .2s ease both; }
+
+    .legal-card {
+      position: relative;
+      width: 100%;
+      max-width: 640px;
+      max-height: min(86vh, 780px);
+      overflow-y: auto;
+      padding: clamp(22px, 3vw, 34px) clamp(20px, 3vw, 34px);
+      border-radius: 20px;
+      background: var(--card);
+      color: var(--ink);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, .35);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
+    .legal-card h2 { margin: 0 0 6px; font-size: clamp(1.25rem, 2.4vw, 1.5rem); letter-spacing: -.02em; }
+    .legal-card h3 { margin: 20px 0 6px; font-size: 1rem; letter-spacing: -.01em; }
+    .legal-card p { margin: 0 0 10px; color: var(--slate); }
+    .legal-card ul { margin: 0 0 10px; padding-left: 20px; color: var(--slate); }
+    .legal-card li { margin-bottom: 4px; }
+    .legal-card a { color: var(--coral-deep); }
+
+    .legal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, .06);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+
+    .legal-close:hover { background: rgba(217, 84, 74, .14); transform: rotate(90deg); }
+
+    body.legal-open { overflow: hidden; }
   </style>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVZ5B4GS" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <a class="skip" href="#contenido">Saltar al contenido</a>
-  <header>
-    <div class="wrap bar">
-      <a href="#inicio" aria-label="UniHome, inicio"><img src="assets/logo.webp" alt="UniHome" width="119"
-          height="34"></a>
-      <nav aria-label="Principal"><a href="#como">Cómo funciona</a><a href="#beneficios">Beneficios</a><a
-          href="#privacidad">Privacidad</a><a href="#eliminar">Eliminar cuenta</a><a href="#contacto">Contacto</a></nav>
-      <a class="btn sm js-play" href="#inicio">Descargar</a>
-    </div>
-  </header>
 
-  <main id="contenido">
-    <div class="wrap hero" id="inicio">
-      <div>
+  <div class="page">
+    <header class="shell topbar">
+      <a class="brand" href="#" aria-label="UniHome, inicio">
+        <img src="assets/logo.png" alt="UniHome" width="520" height="149">
+      </a>
+
+      <nav class="socials" aria-label="Redes sociales de UniHome">
+        <a href="#" data-link="instagram" aria-label="Instagram de UniHome">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect>
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+        <a href="#" data-link="facebook" aria-label="Facebook de UniHome">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M13.6 22v-8.1h2.72l.41-3.16H13.6V8.72c0-.91.25-1.53 1.56-1.53h1.67V4.36c-.29-.04-1.28-.12-2.44-.12-2.41 0-4.06 1.47-4.06 4.17v2.33H7.6v3.16h2.73V22h3.27z">
+            </path>
+          </svg>
+        </a>
+        <a href="#" data-link="youtube" aria-label="YouTube de UniHome">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z" />
+          </svg>
+        </a>
+      </nav>
+    </header>
+
+    <figure class="visual">
+      <img src="assets/Mudanza-2.png" width="1286" height="720"
+        alt="Un estudiante sonríe mientras carga una caja de mudanza frente a los edificios de su universidad; al fondo, otros jóvenes llevan más cajas.">
+    </figure>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <main class="shell hero-main" id="contenido">
+      <div class="content">
         <p class="eyebrow">Cerca del campus. Cerca de ti.</p>
-        <h1>Tu nueva etapa empieza en casa<span>.</span></h1>
-        <p class="lead">Encuentra tu espacio universitario con arrendadores verificados.</p>
-        <a class="btn js-play" href="#inicio">Descargar en Google Play</a>
-        <p class="note">Disponible para Android.</p>
-        <ul class="chips">
-          <li>Arrendadores verificados</li>
-          <li>Cerca de tu campus</li>
-          <li>Tus datos protegidos</li>
-        </ul>
+        <h1>Estudia lejos. <span>Siéntete como en casa.</span></h1>
+        <p class="lead">Alojamientos universitarios con arrendadores 100% verificados.</p>
+        <div class="actions">
+          <a class="btn-playstore" href="#" data-link="googlePlay" aria-label="Descargar UniHome en Google Play">
+            <svg class="play-icon" viewBox="0 0 512 512" aria-hidden="true">
+              <path fill="#415A6C"
+                d="M325.8 238.7L76.6 30.6C65.5 21.2 50 24.3 50 39.8v432.4c0 15.5 15.5 18.6 26.6 9.2l249.2-208.1c4.5-3.8 4.5-30.8 0-34.6z">
+              </path>
+              <path fill="#47BDFF" d="M76.6 30.6l249.2 208.1-70.1 58.5L50 125.7V39.8c0-15.5 15.5-18.6 26.6-9.2z">
+              </path>
+              <path fill="#00E676" d="M76.6 481.4c-11.1 9.4-26.6 6.3-26.6-9.2V386.3l205.7-171.5 70.1 58.5-249.2 208.1z">
+              </path>
+              <path fill="#FFD600" d="M462 238.7l-79.6-66.5-56.6 47.3 56.6 47.3 79.6-66.5c10.3-8.6 10.3-17.7 0-21.6z">
+              </path>
+              <path fill="#FF3D00" d="M382.4 172.2L325.8 219.5 76.6 30.6c7.7-6.5 18.2-7 26.8-1.7l279 143.3z"></path>
+            </svg>
+            <span class="play-text">
+              <span class="play-subtitle">Descargar en</span>
+              <span class="play-title">Google Play</span>
+            </span>
+          </a>
+        </div>
+        <p class="note">Gratis · Disponible para Android</p>
       </div>
-      <div class="phone"><img src="assets/app-inicio.webp" width="330" height="650"
-          alt="Pantalla de bienvenida de UniHome: «Tu nueva etapa empieza en casa», con el botón Explorar alojamientos">
-      </div>
+    </main>
+
+    <!-- Barra legal discreta -->
+    <div class="legal-bar">
+      <a href="delete-account.html">Eliminar cuenta</a>
+      <span class="legal-sep" aria-hidden="true">·</span>
+      <a href="#" id="openPrivacy">Aviso de privacidad</a>
     </div>
+  </div><!-- /.page -->
 
-    <section id="como" class="alt">
-      <div class="wrap">
-        <h2>Cómo funciona</h2>
-        <p class="sub">De la búsqueda a la mudanza, en tres pasos.</p>
-        <div class="grid">
-          <div class="card"><span class="num" aria-hidden="true">1</span>
-            <h3>Explora en el mapa</h3>
-            <p>Elige tu universidad y mira los alojamientos con su precio, en mapa o en lista.</p>
-          </div>
-          <div class="card"><span class="num" aria-hidden="true">2</span>
-            <h3>Revisa cada espacio</h3>
-            <p>Fotos, precio mensual, distancia caminando, condiciones y si el arrendador está verificado.</p>
-          </div>
-          <div class="card"><span class="num" aria-hidden="true">3</span>
-            <h3>Escribe o agenda</h3>
-            <p>Crea tu cuenta, manda un mensaje al arrendador o agenda una visita.</p>
-          </div>
-        </div>
-        <div class="shots" aria-label="Capturas de la aplicación">
-          <figure>
-            <div class="phone"><img src="assets/app-mapa.webp" width="325" height="661" loading="lazy"
-                alt="Mapa con alojamientos y precios cerca de Universidad Ejemplo"></div>
-            <figcaption>Mapa con precios</figcaption>
-          </figure>
-          <figure>
-            <div class="phone"><img src="assets/app-detalle.webp" width="326" height="657" loading="lazy"
-                alt="Detalle de un alojamiento con fotos, precio, distancia y arrendador verificado"></div>
-            <figcaption>Detalle del alojamiento</figcaption>
-          </figure>
-          <figure>
-            <div class="phone"><img src="assets/app-registro.webp" width="326" height="650" loading="lazy"
-                alt="Formulario para crear una cuenta, con aviso de privacidad"></div>
-            <figcaption>Crea tu cuenta</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+  <!-- Modal del aviso de privacidad -->
+  <div class="legal-modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle"
+    aria-hidden="true">
+    <div class="legal-card" role="document">
+      <button class="legal-close" type="button" aria-label="Cerrar aviso de privacidad" id="closePrivacy">✕</button>
 
-    <section id="beneficios">
-      <div class="wrap">
-        <h2>Pensado para estudiantes</h2>
-        <p class="sub">Menos incertidumbre al elegir dónde vivir.</p>
-        <div class="grid">
-          <div class="card">
-            <h3>Arrendadores verificados</h3>
-            <p>Identificamos a quienes publican para que empieces con más confianza.</p>
-          </div>
-          <div class="card">
-            <h3>Cerca de tu campus</h3>
-            <p>Ves la distancia en kilómetros y el tiempo a pie hasta tu universidad.</p>
-          </div>
-          <div class="card">
-            <h3>Precios claros</h3>
-            <p>El precio mensual a la vista en el mapa y en cada ficha.</p>
-          </div>
-          <div class="card">
-            <h3>Tus datos protegidos</h3>
-            <p>Aceptas el aviso de privacidad al registrarte y puedes eliminar tu cuenta cuando quieras.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      <h2 id="privacyTitle">Aviso de privacidad</h2>
+      <p><strong>UniHome</strong> (en adelante, "UniHome") con domicilio en México, es responsable del tratamiento de
+        sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los
+        Particulares (LFPDPPP).</p>
 
-    <section id="privacidad" class="alt">
-      <div class="wrap legal">
-        <h2>Aviso de privacidad y manejo de datos</h2>
-        <p class="sub">Versión <span class="pend">[VERSIÓN]</span> · Última actualización <span
-            class="pend">[FECHA]</span></p>
-        <h3>Responsable</h3>
-        <p><span class="pend">[NOMBRE DEL RESPONSABLE]</span> es responsable del tratamiento de tus datos personales.
-          Contacto: <span class="pend">[CORREO DE CONTACTO]</span>.</p>
-        <h3>Datos que recopilamos</h3>
-        <ul>
-          <li>Al crear tu cuenta: nombre completo, correo electrónico, fecha de nacimiento, género y contraseña (que se
-            guarda de forma protegida).</li>
-          <li>Datos necesarios para usar la aplicación, como la universidad que eliges y tus mensajes con arrendadores.
-          </li>
-          <li><span class="pend">[DEFINIR: otros datos, si el equipo los recopila]</span></li>
-        </ul>
-        <h3>Para qué los usamos</h3>
-        <ul>
-          <li>Crear y administrar tu cuenta y confirmar tu correo.</li>
-          <li>Permitirte buscar alojamientos, guardar favoritos y comunicarte con arrendadores.</li>
-          <li>Mantener la seguridad del servicio.</li>
-        </ul>
-        <h3>Consentimiento</h3>
-        <p>Al registrarte te pedimos que leas este aviso y marques tu consentimiento. Sin él no se crea la cuenta.</p>
-        <h3>Tus derechos</h3>
-        <p>Puedes solicitar el acceso, la rectificación, la cancelación y la oposición (derechos ARCO) respecto de tus
-          datos, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares,
-          escribiendo a <span class="pend">[CORREO DE CONTACTO]</span>.</p>
-        <h3>Menores de edad, conservación y transferencias</h3>
-        <p><span class="pend">[DEFINIR: tratamiento de datos de menores de edad]</span> · <span class="pend">[DEFINIR:
-            tiempo de conservación]</span> · <span class="pend">[DEFINIR: proveedores o transferencias de datos]</span>
-        </p>
-      </div>
-    </section>
+      <h3>1. Datos que recabamos</h3>
+      <ul>
+        <li>Datos de identificación (nombre, correo electrónico).</li>
+        <li>Datos de contacto y preferencias de búsqueda de alojamiento.</li>
+        <li>Datos técnicos de navegación (IP, dispositivo, páginas visitadas).</li>
+      </ul>
 
-    <section id="eliminar">
-      <div class="wrap legal">
-        <h2>Eliminar tu cuenta</h2>
-        <p class="sub">Puedes pedirlo desde la app o por correo.</p>
-        <h3>Desde la aplicación</h3>
-        <p>Entra a <strong>Perfil → Eliminar cuenta</strong>, escribe tu contraseña y confirma.</p>
-        <h3>Por correo</h3>
-        <p>Escribe a <span class="pend">[CORREO DE CONTACTO]</span> desde el correo con el que te registraste, con el
-          asunto «Eliminar cuenta».</p>
-        <h3>Qué se elimina</h3>
-        <p>Tu cuenta y tus datos personales, salvo lo que la ley obligue a conservar. <span class="pend">[DEFINIR:
-            plazos y excepciones]</span></p>
-      </div>
-    </section>
+      <h3>2. Finalidades del tratamiento</h3>
+      <ul>
+        <li>Brindar el servicio de búsqueda y contacto de alojamiento estudiantil.</li>
+        <li>Enviar información relacionada con el servicio.</li>
+        <li>Analítica y mejora del sitio mediante herramientas como Google Analytics / Tag Manager.</li>
+      </ul>
 
-    <section id="contacto" class="alt">
-      <div class="wrap">
-        <h2>Contacto</h2>
-        <p class="sub">¿Dudas sobre UniHome o sobre tus datos? Escríbenos a <span class="pend">[CORREO DE
-            CONTACTO]</span>.</p>
-        <a class="btn js-play" href="#inicio">Descargar en Google Play</a>
-      </div>
-    </section>
-  </main>
+      <h3>3. Transferencia de datos</h3>
+      <p>Sus datos no serán transferidos a terceros sin su consentimiento, salvo las excepciones previstas en el
+        artículo 37 de la LFPDPPP.</p>
 
-  <footer>
-    <div class="wrap"><span>© 2026 UniHome</span><span><a href="#privacidad">Aviso de privacidad</a> · <a
-          href="#eliminar">Eliminar cuenta</a></span></div>
-  </footer>
+      <h3>4. Derechos ARCO</h3>
+      <p>Usted puede ejercer sus derechos de Acceso, Rectificación, Cancelación y Oposición enviando un correo a
+        <a href="mailto:unihome0412@gmail.com">unihome0412@gmail.com</a>.
+      </p>
+
+      <h3>5. Cookies y tecnologías de rastreo</h3>
+      <p>Este sitio utiliza cookies y Google Tag Manager para fines analíticos. Puede deshabilitarlas desde la
+        configuración de su navegador.</p>
+
+      <h3>6. Cambios al aviso</h3>
+      <p>Cualquier modificación a este aviso será publicada en esta misma sección. Última actualización:
+        <span id="privacyDate"></span>.
+      </p>
+    </div>
+  </div>
 
   <script>
-    /* Pega aquí el enlace de Google Play cuando la app esté publicada. Mientras esté vacío, los botones muestran «Próximamente». */
-    const PLAY_URL = "https://play.google.com/"; // <--- Cambia esto por el enlace real
-    document.querySelectorAll(".js-play").forEach(function (a) {
-      if (PLAY_URL) { a.href = PLAY_URL; a.target = "_blank"; a.rel = "noopener noreferrer"; return; }
-      a.textContent = a.classList.contains("sm") ? "Próximamente" : "Próximamente en Google Play";
-      a.setAttribute("aria-disabled", "true");
-      a.addEventListener("click", function (e) { e.preventDefault(); });
+    const LINKS = {
+      googlePlay: "https://play.google.com/",
+      instagram: "https://www.instagram.com/unihome0412/",
+      facebook: "https://www.facebook.com/people/Unihome/61596543299731/",
+      youtube: "https://www.youtube.com/@UniHome-p4k"
+    };
+
+    document.querySelectorAll("[data-link]").forEach(function (element) {
+      const url = LINKS[element.dataset.link];
+
+      if (url) {
+        element.href = url;
+        element.target = "_blank";
+        element.rel = "noopener noreferrer";
+      } else {
+        element.removeAttribute("href");
+        element.setAttribute("aria-disabled", "true");
+        element.style.cursor = "default";
+      }
+
+      element.addEventListener("click", function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "social_click",
+          link_type: element.dataset.link,
+          link_url: element.href || ""
+        });
+      });
     });
+
+    // ===== Aviso de privacidad (modal) =====
+    (function () {
+      const modal = document.getElementById("privacyModal");
+      const openBtn = document.getElementById("openPrivacy");
+      const closeBtn = document.getElementById("closePrivacy");
+      const dateEl = document.getElementById("privacyDate");
+      let lastFocused = null;
+
+      if (dateEl) {
+        dateEl.textContent = new Date().toLocaleDateString("es-MX", {
+          year: "numeric", month: "long", day: "numeric"
+        });
+      }
+
+      function openModal(e) {
+        if (e) e.preventDefault();
+        lastFocused = document.activeElement;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("legal-open");
+        closeBtn.focus();
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "privacy_open" });
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("legal-open");
+        if (lastFocused) lastFocused.focus();
+      }
+
+      openBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+    })();
   </script>
 </body>
 
